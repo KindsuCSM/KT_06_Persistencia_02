@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">AplicacionEjemplo</string>
+    <string name="ex2">Ejercicio 2</string>
+    <string name="ex3">Ejercicio 3</string>
+    <string name="ex1">Ejercicio 1</string>
+    <string name="hintPregunta">Introduzca la respuesta</string>
+    <string name="hintFecha">Introduzca la fecha</string>
+    <string name="lblFecha">Pulse para añadir una fecha</string>
+
+    <string name="btnEnviarRespuesta">Enviar respuesta</string>
+    <string name="acertar">¡Felicidades, completaste todas las preguntas!</string>
+</resources>

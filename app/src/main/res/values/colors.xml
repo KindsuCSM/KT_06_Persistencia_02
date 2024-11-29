@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="grey">#FFFFFF</color>
+    <color name="greygrey">#403750</color>
+    <color name="azul">#C2EDE9</color>
+    <color name="amarillo">#E8E6BC</color>
+    <color name="morado">#C9BBDD</color>
+    <color name="rosa">#E9CAEA</color>
+    <color name="default_color">#FFFFFFFF</color>
+    <color name="moradoOscuro">#7F6A9E</color>
+
+</resources>
