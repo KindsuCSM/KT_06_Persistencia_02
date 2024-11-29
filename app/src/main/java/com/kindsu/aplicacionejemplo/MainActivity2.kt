@@ -19,7 +19,7 @@ class MainActivity2 : AppCompatActivity() {
     private lateinit var binding: ActivityMain2Binding
     private val preferencias by lazy {
         getSharedPreferences("preguntasGuardadas", Context.MODE_PRIVATE)
-    }
+    } //By lazy nos hace que el bloque no se ejecutará hasta que no se use
     private var contador = 0
     private var puntuacion = 0
 
@@ -28,7 +28,6 @@ class MainActivity2 : AppCompatActivity() {
         enableEdgeToEdge()
         binding = ActivityMain2Binding.inflate(layoutInflater)
         setContentView(binding.root)
-
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -48,33 +47,38 @@ class MainActivity2 : AppCompatActivity() {
 
         //Listener btnEnviar
         binding.btnEnviar.setOnClickListener {
+            //Obtener la respuesta que ha introducido el usuario en una variable sin espacios por delante o por detras y en minusculas
             val respuesta = binding.etRespuesta.text.toString().trim().lowercase()
 
+            //Si la respuesta introducida coincide con la respuesta guardada en la lista asociada al numero del contador hace:
             if (respuesta == respuestas[contador]) {
+                //Suma 10 puntos a la puntuacion y lo muestra en la pantalla
                 puntuacion += 10
                 binding.tvPuntuacion.text = puntuacion.toString()
+                //Hace un toast para que el usuario sepa que es correcta o incorrecta
                 Toast.makeText(this, "Correcto!", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(this, "Incorrecto. Intenta de nuevo.", Toast.LENGTH_SHORT).show()
             }
 
+            //tras comprobar la respuesta, la borramos del editText y sumamos 1 al contador
             binding.etRespuesta.text.clear()
-
             contador++
 
-
-
+            //Si el contador llega al maximo(size de la lista), se reinician contadores, sino sigue a la siguiente
             if (contador < preguntas.size) {
                 binding.tvPregunta.text = preguntas[contador]
             } else {
                 contador = 0
+                puntuacion = 0
                 binding.tvPregunta.text = ContextCompat.getString(this, R.string.acertar)
             }
 
+            //guardamos el contador y la puntuacion dentro del archivo con diferentes nombres
             val editor = preferencias.edit()
             editor.putInt("contador", contador)
             editor.putInt("puntuacion", puntuacion)
-            editor.apply()
+            editor.apply() //Aplicamos
         }
 
         binding.btnEjercicio1.setOnClickListener {

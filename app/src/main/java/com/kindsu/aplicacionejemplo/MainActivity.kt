@@ -30,15 +30,12 @@ class MainActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        cambiarColor(
-            preferencias.getInt(
-                "color",
-                ContextCompat.getColor(this, R.color.default_color)
-            )
-        )
+        //Cambiar el color del card tras iniciar la aplicacion, el ContextCompat es para tener un color de referencia
+        cambiarColor(preferencias.getInt("color", ContextCompat.getColor(this, R.color.default_color)))
         addListeners()
     }
 
+    // Funcion para guardar el color cuando se le de al botón del color
     fun guardarColor(color: Int) {
         val editor = preferencias.edit()
         editor.putInt("color", color)
@@ -67,17 +64,17 @@ class MainActivity : AppCompatActivity() {
             cambiarColor(color)
             guardarColor(color)
         }
-        binding.btnEjercicio2.setOnClickListener{
+        binding.btnEjercicio2.setOnClickListener {
             val intent = Intent(this, MainActivity2::class.java)
             startActivity(intent)
         }
 
-        binding.btnEjercicio3.setOnClickListener{
+        binding.btnEjercicio3.setOnClickListener {
             val intent = Intent(this, MainActivity3::class.java)
             startActivity(intent)
         }
     }
-
+    //Funcion para cambiar el color del card mientras la aplicacion esté en uso
     fun cambiarColor(color: Int) {
         binding.crdCambiar.setCardBackgroundColor(color)
     }
